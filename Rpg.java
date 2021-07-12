@@ -7,19 +7,33 @@
  */
 import java.util.*;
 import java.util.Timer;
+import java.lang.Math;
+import java.util.Date;
 
 public class Rpg
 {
-public void main() throws InterruptedException {
-    
+public void main()  {
+    //variable categories
       boolean merit1 = false; //ballet power
       boolean sword = false; //ultimate sword
+      boolean fight = false; //For fights
+      boolean inv = false;
+      int rand;
       int atk = 5;
-      int def = 5;
-      int dext = 5;
-      int speed = 5;     
-      int mchp = 40;
-      
+      int Int = 5;
+      int spe = 5;     
+      int hp = 40;
+      int wis = 5;  
+      int coins = 50;
+      int xp = 0;
+      int lvl = 1;
+      int maxhp=40;
+      int bdhp = 15;
+      int bddmg = 3;
+      int fullpotion = 0;
+      int ttpotion = 0;
+      Random random = new Random();
+            
     Scanner sc = new Scanner(System.in);
     System.out.println("Enter Your name");
     String name = sc.nextLine();
@@ -235,8 +249,9 @@ if(CR.equals("1")){
 System.out.println("Thought you would have learnt by now. Left is not the way to go. Thankfully, this time left is not that lethal.");
 System.out.println("You just have to fight a Rock monster.");
 System.out.println("You raise your sword and charge towards the rock monster");
-
-
+System.out.println("Press 1 to continue.");
+String bro = sc.nextLine();
+if(bro.equals("1")){
 
 
 
@@ -259,11 +274,14 @@ else if(sword == true){
 System.out.println("You rush forward with incredible speed and dodge the oncoming assault of rocks.");
 System.out.println("You bring your sword down with all your strength, and as it touches the hard skin of the rock monster, it momentarily glows");
 System.out.println("Then it penetrates the hard rock shell of the monster and you emerge victorious");
-
+System.out.println("Afetr that you keep moving left until...");
 
 
 }
-
+}
+else{System.out.println("Error! Game code will be terminated.");
+return;
+}
 }
 else if(CR.equals("2")){
 System.out.println("So, you choose right, huh? Well, you come across a big monster which seems stronger than you. It seems like bad news");
@@ -276,7 +294,7 @@ if(merit1 == true){
     System.out.println("'Ha! I'm a master at ballet!' you say and show off your moves. The monster falls in love with your moves");
     System.out.println("'Wow! What Grace!' The monster exclaims. Never have I seen a better dancer, it says wiping a tear.");
     System.out.println("The monster allows you to pass, and begins trying to imitate your moves. You always knew ballet was cool.");
-    
+    System.out.println("You move ahead and...");
     
     }
 else if(merit1 == false){
@@ -300,7 +318,7 @@ else if(merit1 == false){
 else if(CR.equals("3")){
 System.out.println("So, you decide to go straight?");
 System.out.println("The journey is uneventful. You find no monsters.");
-
+System.out.println("Finally...");
 } 
 System.out.println("You enter a huge hall. In the middle sits an old woman. \n You walk towards the woman.");
 System.out.println("'Come closer " + name + ". I have been watching you.'");
@@ -313,22 +331,166 @@ System.out.println("'Why are you here " + name +".' ");
 }
 else{System.out.println("You have reached so far, to think a stupid spelling mistake will be the end of this game. Oh well.");
     return;}
+    
+    
+    
+    
+    
+    
     System.out.println("'I- I don't remember!' you say realising, you don't know the aim of this missiom.");
     System.out.println("'Why am I here?' you say unsure of everything. \n The woman chuckles and says 'In time great hero, in time.'");
     System.out.println("'Right now you must learn about battles.' \n 'Ya, I have battled a few monsters.' you say innocently.");
     System.out.println("Not those kind of battles! From now on you will have stats which will help you in life threatening situations");
+    System.out.println("Press 1 to continue.");
+    String conio = sc.nextLine();
+    if(conio.equals ("1")){
     System.out.println("Attack for the damage you inflict upont the enemy.");
-    System.out.println
-    System.out.println
+    System.out.println("Speed to be faster and quicker in your moves");
+    System.out.println("Intelligence will come in handy, when you need to use your intellect.");
+    System.out.println("Wisdom is the knowledge you possess. \n Without these stats it will be impossible to beat enemies.");
+    System.out.println("And of course your health points! You start with 40 health points, but can increase it as you play along.");
+    System.out.println("Here are 50 coins! You can use these coins to buy health potions and better weapons!");
+    System.out.println("'Thank you, so much! But there is still so much I want to know.'");
+    System.out.println("'And I will tell you, dear hero, but have patience. Ahead lies a bandit. You must fight it with your stats.'");
+    System.out.println("'I trust you, and believe you will know how to beat the bandit. Here is 1 stat point.'");
+    System.out.println("You can assign stat points to any stat and inrease its power, try it.");
+    System.out.println("Press 1 to assign attack stats, Press 2 for intelligence stat, Press 3 for Speed stat and Press 4 for Wisdom stat");
+    String st1 = sc.nextLine();
+    if(st1.equals("1")){
+    atk = atk+1;
+    System.out.println("Your attack stat is now " + atk);
+    }
+    else if(st1.equals("2")){
+    Int = Int + 1;
+    System.out.println("Your intelligence is now " + Int);
+    
+    }
+    else if(st1.equals("3")){
+    spe = spe + 1; 
+    System.out.println("Your speed is now " + spe);    
+    }
+    else if(st1.equals("4")){
+    wis = wis + 1;
+    System.out.println("Your wisdom is now " + wis);
+    }
+    else{System.out.println("Please put a valid input. Code will be terminated.");}
+}
+else{System.out.println("Please put a valid input. Code will be terminated.");}
+
+System.out.println("You walk towards the bandit which guards the door to the third level of the dungeon. You raise your sword.");
+bdhp = 15;
+bddmg = 3;
+
+System.out.println("Press 1 to begin the fight.");
+String beg = sc.nextLine();
+if(beg.equals("1")){
+    fight = true;
+    
+}
+else{System.out.println("You pressed the wrong button. Sorry, but you need to retart the game.");
+return;}
+while(fight == true){
+    System.out.println("Press 'a' to slash, Press 'b' to bribe the bandit with money.(50 Coins), Press 'c' to use items.");
+    String b1 = sc.nextLine();
+
+    
+    if(b1.equals("a")){
+       
+       
+        int hit = random.nextInt(6);
+    int dmg = atk + hit;
+    System.out.println("\n You deal " + dmg + " hp damage to the enemy."); 
+    bdhp = bdhp - dmg;
+    int dmgt = bddmg + hit;
+    System.out.println("\n You take " + dmgt + " hp damage from the enemy." );
+    hp = hp - dmgt;
+    if(hp <= 0){System.out.println("The bandit stabs you in the chest, and you fall to the ground. \n You have reached... \n ... The End.");
+       return; 
+    }
+    else if(bdhp <= 0){
+System.out.println("\n You take your sword and drive it through the bandit. The bandit falls down. He doesn't get up again.");
+System.out.println("You ruffle through the bandits pockets and find 75 coins!");
+coins = coins + 75;
+fight = false;
+   }  
+}
+else if(b1.equals("b")){
+    System.out.println("\n What are you thinking? You can't bribe a bandit! \n He takes all your money and still does not let you pass.");
+    System.out.println("You really have to fight him.");
+    coins = 0;
+
+
+}
+else if(b1.equals("c")){
+if(inv == false)
+System.out.println("You currently don't have any items.");
+else if(inv == true){
+    System.out.println("Impossible.");
+
+}
+}
+}
+
+
+
+
+System.out.println("You find a health potion. You're current health is "+ hp +" Do you want to drink the potion? \n Enter 1 for yes, and 2 if you wish to save it for later" );
+String x = sc.nextLine();
+if(x.equals("1")){
+System.out.println("You drink the full health potion and regain your strength.");
+hp = maxhp;
+}
+else if(x.equals("2")){
+    System.out.println("You stuff the potion in your bag. You think to yourself that this item might come in handy later.");
+    inv = true;
+    fullpotion = fullpotion + 1;
+}
+else{System.out.println("Error! Invalid input!");}
+System.out.println("You gain one more stat. \n Enter 1 to gain an attack stat, Enter 2 to gain a intelligence stat, Enter 3 to gain a speed stat, Enter 4 to gain a wisdom stat");
+String st2 = sc.nextLine();
+if(st2.equals("1")){
+    atk = atk+1;
+    System.out.println("Your attack stat is now " + atk);
+    }
+    else if(st2.equals("2")){
+    Int = Int + 1;
+    System.out.println("Your intelligence is now " + Int);
+    
+    }
+    else if(st2.equals("3")){
+    spe = spe + 1; 
+    System.out.println("Your speed is now " + spe);    
+    }
+    else if(st2.equals("4")){
+    wis = wis + 1;
+    System.out.println("Your wisdom is now " + wis);
+    }
+    else{System.out.println("Please put a valid input. Code will be terminated.");}
+    System.out.println("With a smile on your face, you leave the second level of the dungeon and descend deeper into the darkness.");
+    System.out.println('\u000C');
+    
+    
+    //third level
+    System.out.println("Welcome to the third level of the Dungeon.");
+    System.out.println("Still alive, huh? I honestly didn't think you'd make it so far, yet here you stand before my eyes.");
+    System.out.println("Usually you get two routes, but this time a single file corridor is in front of you.");
+    System.out.println("You walk through the corridor which is filled with piles of bones.");
+    System.out.println("All of them were heroes before you.");
+ 
+    
+    
+    
+    
+    
     
 }
 }
 
 
 
+    
+    
 
-    
-    
 
 
 
