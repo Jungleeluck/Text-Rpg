@@ -28,12 +28,11 @@ public void main()  {
       int xp = 0;
       int lvl = 1;
       int maxhp=40;
-      int bdhp = 15;
+      int bdhp = 25;
       int bddmg = 3;
       int fullpotion = 0;
       int ttpotion = 0;
       Random random = new Random();
-            
     Scanner sc = new Scanner(System.in);
     System.out.println("Enter Your name");
     String name = sc.nextLine();
@@ -395,25 +394,68 @@ while(fight == true){
 
     
     if(b1.equals("a")){
-       
+       int chance = random.nextInt(100);
+       int chance2 = random.nextInt(100);
+      
+       if(chance > 30 ){System.out.println("You miss!");
+            int ehit = random.nextInt(6);
+         int dmgt = bddmg + ehit;
+         if(chance2 > 30){
+    System.out.println("\n You take " + dmgt + " hp damage from the enemy." );
+    hp = hp - dmgt;}
+    else{System.out.println("The enemy misses too!");}
+         }
+         if(chance2 < 30){
+              System.out.println("The enemy misses!");         
+            
+            }
+  
        
         int hit = random.nextInt(6);
+        int ehit = random.nextInt(6);
     int dmg = atk + hit;
     System.out.println("\n You deal " + dmg + " hp damage to the enemy."); 
     bdhp = bdhp - dmg;
-    int dmgt = bddmg + hit;
+    int dmgt = bddmg + ehit;
     System.out.println("\n You take " + dmgt + " hp damage from the enemy." );
     hp = hp - dmgt;
+}
     if(hp <= 0){System.out.println("The bandit stabs you in the chest, and you fall to the ground. \n You have reached... \n ... The End.");
        return; 
     }
     else if(bdhp <= 0){
 System.out.println("\n You take your sword and drive it through the bandit. The bandit falls down. He doesn't get up again.");
 System.out.println("You ruffle through the bandits pockets and find 75 coins!");
+System.out.println("You also gain 80 experience.");
+xp=xp+80;
+if(xp == 100){
+System.out.println("Congratulations! You level up!");
+System.out.println("You gain one more stat. \n Enter 1 to gain an attack stat, Enter 2 to gain a intelligence stat, Enter 3 to gain a speed stat, Enter 4 to gain a wisdom stat");
+
+String st3 = sc.nextLine();
+if(st3.equals("1")){
+    atk = atk+1;
+    System.out.println("Your attack stat is now " + atk);
+    }
+    else if(st3.equals("2")){
+    Int = Int + 1;
+    System.out.println("Your intelligence is now " + Int);
+    
+    }
+    else if(st3.equals("3")){
+    spe = spe + 1; 
+    System.out.println("Your speed is now " + spe);    
+    }
+    else if(st3.equals("4")){
+    wis = wis + 1;
+    System.out.println("Your wisdom is now " + wis);
+    }
+    else{System.out.println("Please put a valid input. Code will be terminated.");}
+}
 coins = coins + 75;
 fight = false;
    }  
-}
+
 else if(b1.equals("b")){
     System.out.println("\n What are you thinking? You can't bribe a bandit! \n He takes all your money and still does not let you pass.");
     System.out.println("You really have to fight him.");
@@ -436,9 +478,16 @@ else if(inv == true){
 
 System.out.println("You find a health potion. You're current health is "+ hp +" Do you want to drink the potion? \n Enter 1 for yes, and 2 if you wish to save it for later" );
 String x = sc.nextLine();
+
+
+
+
 if(x.equals("1")){
 System.out.println("You drink the full health potion and regain your strength.");
 hp = maxhp;
+
+
+
 }
 else if(x.equals("2")){
     System.out.println("You stuff the potion in your bag. You think to yourself that this item might come in handy later.");
@@ -448,6 +497,10 @@ else if(x.equals("2")){
 else{System.out.println("Error! Invalid input!");}
 System.out.println("You gain one more stat. \n Enter 1 to gain an attack stat, Enter 2 to gain a intelligence stat, Enter 3 to gain a speed stat, Enter 4 to gain a wisdom stat");
 String st2 = sc.nextLine();
+
+
+
+
 if(st2.equals("1")){
     atk = atk+1;
     System.out.println("Your attack stat is now " + atk);
@@ -466,6 +519,7 @@ if(st2.equals("1")){
     System.out.println("Your wisdom is now " + wis);
     }
     else{System.out.println("Please put a valid input. Code will be terminated.");}
+        
     System.out.println("With a smile on your face, you leave the second level of the dungeon and descend deeper into the darkness.");
     System.out.println('\u000C');
     
@@ -476,17 +530,20 @@ if(st2.equals("1")){
     System.out.println("Usually you get two routes, but this time a single file corridor is in front of you.");
     System.out.println("You walk through the corridor which is filled with piles of bones.");
     System.out.println("All of them were heroes before you.");
- 
-    
-    
-    
-    
-    
+    System.out.println("You see two doors. The one on the left holds a monster and the one on the right holds a veteran assassin.");
+    System.out.println("Enter 1 to fight the monster, Enter 2 to fight the assassin.");
+    String door = sc.nextLine();
+    if(door.equals("1")){
+    System.out.println("You see a big monster which a large face and big teeth but its most striking feature are its legs.");
+    System.out.println("It's great legs indicate great speed.");
+    if(spe >= 6) {
+        System.out.println(); 
+        
     
 }
 }
-
-
+}
+}
 
     
     
