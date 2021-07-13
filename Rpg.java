@@ -9,8 +9,9 @@ import java.util.*;
 import java.util.Timer;
 import java.lang.Math;
 import java.util.Date;
-
-public class Rpg
+import java.applet.*;
+import java.awt.*;
+public class Rpg extends Applet
 {
 public void main()  {
     //variable categories
@@ -18,6 +19,10 @@ public void main()  {
       boolean sword = false; //ultimate sword
       boolean fight = false; //For fights
       boolean inv = false;
+      boolean lvl1 = true;
+      boolean lv2 = false;
+      boolean fp = false;
+      boolean tt = false; //twenty hp potion
       int rand;
       int atk = 5;
       int Int = 5;
@@ -28,10 +33,11 @@ public void main()  {
       int xp = 0;
       int lvl = 1;
       int maxhp=40;
-      int bdhp = 25;
+      int bdhp = 15;
       int bddmg = 3;
       int fullpotion = 0;
       int ttpotion = 0;
+      
       Random random = new Random();
     Scanner sc = new Scanner(System.in);
     System.out.println("Enter Your name");
@@ -389,7 +395,7 @@ if(beg.equals("1")){
 else{System.out.println("You pressed the wrong button. Sorry, but you need to retart the game.");
 return;}
 while(fight == true){
-    System.out.println("Press 'a' to slash, Press 'b' to bribe the bandit with money.(50 Coins), Press 'c' to use items.");
+    System.out.println("\n Press 'a' to slash, Press 'b' to bribe the bandit with money.(50 Coins), Press 'c' to use items.");
     String b1 = sc.nextLine();
 
     
@@ -397,7 +403,7 @@ while(fight == true){
        int chance = random.nextInt(100);
        int chance2 = random.nextInt(100);
       
-       if(chance > 30 ){System.out.println("You miss!");
+       if(chance < 30 ){System.out.println("You miss!");
             int ehit = random.nextInt(6);
          int dmgt = bddmg + ehit;
          if(chance2 > 30){
@@ -420,7 +426,7 @@ while(fight == true){
     System.out.println("\n You take " + dmgt + " hp damage from the enemy." );
     hp = hp - dmgt;
 }
-    if(hp <= 0){System.out.println("The bandit stabs you in the chest, and you fall to the ground. \n You have reached... \n ... The End.");
+    if(hp <= 0){System.out.println("\n The bandit stabs you in the chest, and you fall to the ground. \n You have reached... \n ... The End.");
        return; 
     }
     else if(bdhp <= 0){
@@ -492,6 +498,7 @@ hp = maxhp;
 else if(x.equals("2")){
     System.out.println("You stuff the potion in your bag. You think to yourself that this item might come in handy later.");
     inv = true;
+    fp = true;
     fullpotion = fullpotion + 1;
 }
 else{System.out.println("Error! Invalid input!");}
@@ -536,15 +543,64 @@ if(st2.equals("1")){
     if(door.equals("1")){
     System.out.println("You see a big monster which a large face and big teeth but its most striking feature are its legs.");
     System.out.println("It's great legs indicate great speed.");
-    if(spe >= 6) {
-        System.out.println(); 
-        
+    if(spe >= 7) {
+        System.out.println("You outrun the monster with speed rivalling a cheetah.");
+        System.out.println("The monster never sees it coming as you stab your sword into it.");
+        xp = xp + 100;
+        if(lv2 == true){
+        if(xp>100){
+        System.out.println("Congratulations! You level up!");
+        lv2 = true;
+        lvl = 2;
+        System.out.println("You gain one more stat. \n Enter 1 to gain an attack stat, Enter 2 to gain a intelligence stat, Enter 3 to gain a speed stat, Enter 4 to gain a wisdom stat");
+       String st4 = sc.nextLine();
+        if(st4.equals("1")){
+    atk = atk+1;
+    System.out.println("Your attack stat is now " + atk);
+    }
+    else if(st4.equals("2")){
+    Int = Int + 1;
+    System.out.println("Your intelligence is now " + Int);
     
+    }
+    else if(st4.equals("3")){
+    spe = spe + 1; 
+    System.out.println("Your speed is now " + spe);    
+    }
+    else if(st4.equals("4")){
+    wis = wis + 1;
+    System.out.println("Your wisdom is now " + wis);
+    }
+    else{System.out.println("Please put a valid input. Code will be terminated.");}
+        }
+    }
+   System.out.println("You beat the monster and leave the room. You decide to go ahead.");
 }
+else{
+System.out.println("The beast comes at you from so many directions, you are unable to follow it");
+System.out.println("You finally get an opening, but you don't know where to attack it.");
+System.out.println("Enter 1 to aim for it's head, Enter 2 to aim for it's leg, Enter 3 to aim for its body");
+if(Int >= 7){
+System.out.println("Test!");
+
+
+
 }
-}
+String montdes = sc.nextLine();
+if(montdes.equals("1")){
+
+
+
+
 }
 
+
+
+
+}
+}
+}
+}
     
     
 
